@@ -18,7 +18,7 @@ namespace CS_407
         {
             InitializeComponent();
         }
-
+        
         private void label5_Click(object sender, EventArgs e)
         {
             
@@ -26,17 +26,25 @@ namespace CS_407
 
         void LaunchJupyter()
         {
-            Process cmd = new Process();
-            cmd.StartInfo.FileName = "cmd.exe";
-            cmd.StartInfo.RedirectStandardInput = true;
-            cmd.StartInfo.RedirectStandardOutput = true;
-            cmd.StartInfo.CreateNoWindow = true;
-            cmd.StartInfo.UseShellExecute = false;
-            cmd.Start();
+            try
+            {
+                Process cmd = new Process();
+                cmd.StartInfo.FileName = "cmd.exe";
+                cmd.StartInfo.RedirectStandardInput = true;
+                cmd.StartInfo.RedirectStandardOutput = true;
+                cmd.StartInfo.CreateNoWindow = true;
+                cmd.StartInfo.UseShellExecute = false;
+                cmd.Start();
 
-            //cmd.StandardInput.WriteLine("jupyter notebook");
-            cmd.StandardInput.Flush();
-            cmd.StandardInput.Close();
+                cmd.StandardInput.WriteLine("jupyter notebook");
+                cmd.StandardInput.Flush();
+                cmd.StandardInput.Close();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            
         }
 
         void ColseJupyter()
@@ -67,7 +75,7 @@ namespace CS_407
         }
         private void Linear_Regression(object sender, EventArgs e)
         {
-            
+            GoToLink("http://127.0.0.1:8888/?token=15d9a9fd76d9041ea66fa91c78b186c04277827887e2a952");
         }
 
         private void Logistic_Regression(object sender, EventArgs e)
