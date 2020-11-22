@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using System.Diagnostics;
 
 namespace CS_407
 {
@@ -24,6 +24,47 @@ namespace CS_407
             
         }
 
+        void LaunchJupyter()
+        {
+            Process cmd = new Process();
+            cmd.StartInfo.FileName = "cmd.exe";
+            cmd.StartInfo.RedirectStandardInput = true;
+            cmd.StartInfo.RedirectStandardOutput = true;
+            cmd.StartInfo.CreateNoWindow = true;
+            cmd.StartInfo.UseShellExecute = false;
+            cmd.Start();
+
+            //cmd.StandardInput.WriteLine("jupyter notebook");
+            cmd.StandardInput.Flush();
+            cmd.StandardInput.Close();
+        }
+
+        void ColseJupyter()
+        {
+            Process cmd = new Process();
+            cmd.StartInfo.FileName = "cmd.exe";
+            cmd.StartInfo.RedirectStandardInput = true;
+            cmd.StartInfo.RedirectStandardOutput = true;
+            cmd.StartInfo.CreateNoWindow = true;
+            cmd.StartInfo.UseShellExecute = false;
+            cmd.Start();
+
+            cmd.StandardInput.WriteLine("Jupyter notebook stop");
+            cmd.StandardInput.Flush();
+            cmd.StandardInput.Close();
+        }
+
+        void GoToLink(string link)
+        {
+            try
+            {
+                Process.Start(link);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
         private void Linear_Regression(object sender, EventArgs e)
         {
             
