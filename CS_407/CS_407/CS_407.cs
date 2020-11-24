@@ -14,9 +14,11 @@ namespace CS_407
 {
     public partial class CS_407 : Form
     {
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/" + "csvFilePath.txt";
         public CS_407()
         {
             InitializeComponent();
+            //LaunchJupyter();
         }
         
         private void label5_Click(object sender, EventArgs e)
@@ -73,9 +75,65 @@ namespace CS_407
                 MessageBox.Show(e.Message);
             }
         }
+
+        string RemakePath(string s)
+        {
+            string path = "";
+            for(int i = 0; i < s.Length; i++)
+            {
+                if(s.ElementAt(i) == '\\')
+                {
+                    path += "/";
+                }
+                else
+                {
+                    path += s.ElementAt(i);
+                }
+            }
+
+            return path;
+        }
         private void Linear_Regression(object sender, EventArgs e)
         {
-            GoToLink("http://127.0.0.1:8888/?token=15d9a9fd76d9041ea66fa91c78b186c04277827887e2a952");
+            Linear_Regressions ls = new Linear_Regressions();
+            try
+            {
+                if (!File.Exists(path))
+                {
+                    TextWriter tsw = new StreamWriter(path, true);
+                    ls.ShowDialog();
+                    string pathfile = ls.getpath();
+                    bool checkCreate = ls.getcheck();
+                    string Newpath = RemakePath(pathfile);
+                    if (checkCreate == true)
+                    {
+                        tsw.WriteLine(Newpath);
+                        GoToLink("http://127.0.0.1:8888/notebooks/Desktop/Code/Jupyter_Notebook/Regressions%20with%20charts.ipynb");
+                    }
+                    tsw.Close();
+                }
+                else
+                {
+                    File.Delete(path);
+                    TextWriter tsw = new StreamWriter(path, true);
+                    ls.ShowDialog();
+                    string pathfile = ls.getpath();
+                    bool checkCreate = ls.getcheck();
+                    string Newpath = RemakePath(pathfile);
+                    if (checkCreate == true)
+                    {
+                        tsw.WriteLine(Newpath);
+                        GoToLink("http://127.0.0.1:8888/notebooks/Desktop/Code/Jupyter_Notebook/Regressions%20with%20charts.ipynb");
+                    }
+                    tsw.Close();
+                }
+            }
+            catch(Exception s)
+            {
+                MessageBox.Show(s.Message);
+            }
+            
+                    
         }
 
         private void Logistic_Regression(object sender, EventArgs e)
@@ -98,9 +156,5 @@ namespace CS_407
 
         }
 
-        private void Cluster_Analysis(object sender, EventArgs e)
-        {
-
-        }
     }
 }
