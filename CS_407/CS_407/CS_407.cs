@@ -157,7 +157,7 @@ namespace CS_407
             Linear_Regressions ls = new Linear_Regressions();
             try
             {
-                string pathL = Environment.CurrentDirectory + "/" + "Regressions%20with%20charts.ipynb";
+                string pathL = Environment.CurrentDirectory + "/" + "Logistic%20Regression.ipynb";
                 string[] sepStrings = { "\\" };
                 string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
                 string path2 = "";
@@ -213,7 +213,61 @@ namespace CS_407
 
         private void Baye_Classification(object sender, EventArgs e)
         {
+            Linear_Regressions ls = new Linear_Regressions();
+            try
+            {
+                string pathL = Environment.CurrentDirectory + "/" + "Naive%20Bayes.ipynb";
+                string[] sepStrings = { "\\" };
+                string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                string path2 = "";
+                for (int i = 3; i < words.Length; i++)
+                {
+                    if (i != words.Length - 1)
+                    {
+                        path2 += words[i];
+                        path2 += "/";
+                    }
+                    else
+                    {
+                        path2 += words[i];
+                    }
 
+                }
+
+                if (!File.Exists(path))
+                {
+                    TextWriter tsw = new StreamWriter(path, true);
+                    ls.ShowDialog();
+                    string pathfile = ls.getpath();
+                    bool checkCreate = ls.getcheck();
+                    string Newpath = RemakePath(pathfile);
+                    if (checkCreate == true)
+                    {
+                        tsw.WriteLine(Newpath);
+                        GoToLink("http://127.0.0.1:8888/notebooks/" + path2);
+                    }
+                    tsw.Close();
+                }
+                else
+                {
+                    File.Delete(path);
+                    TextWriter tsw = new StreamWriter(path, true);
+                    ls.ShowDialog();
+                    string pathfile = ls.getpath();
+                    bool checkCreate = ls.getcheck();
+                    string Newpath = RemakePath(pathfile);
+                    if (checkCreate == true)
+                    {
+                        tsw.WriteLine(Newpath);
+                        GoToLink("http://127.0.0.1:8888/notebooks/" + path2);
+                    }
+                    tsw.Close();
+                }
+            }
+            catch (Exception s)
+            {
+                MessageBox.Show(s.Message);
+            }
         }
 
         private void Descision_Tree(object sender, EventArgs e)
