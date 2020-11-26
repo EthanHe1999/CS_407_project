@@ -126,7 +126,7 @@ namespace CS_407
                     if (checkCreate == true)
                     {
                         tsw.WriteLine(Newpath);                        
-                        GoToLink("http://127.0.0.1:8888/notebooks/" + path2);
+                        GoToLink("http://localhost:8888/notebooks/" + path2);
                     }
                     tsw.Close();
                 }
@@ -141,7 +141,7 @@ namespace CS_407
                     if (checkCreate == true)
                     {
                         tsw.WriteLine(Newpath);                                       
-                        GoToLink("http://127.0.0.1:8888/notebooks/" + path2);
+                        GoToLink("http://localhost:8888/notebooks/" + path2);
                     }
                     tsw.Close();
                 }
@@ -185,7 +185,7 @@ namespace CS_407
                     if (checkCreate == true)
                     {
                         tsw.WriteLine(Newpath);
-                        GoToLink("http://127.0.0.1:8888/notebooks/" + path2);
+                        GoToLink("http://localhost:8888/notebooks/" + path2);
                     }
                     tsw.Close();
                 }
@@ -200,7 +200,7 @@ namespace CS_407
                     if (checkCreate == true)
                     {
                         tsw.WriteLine(Newpath);
-                        GoToLink("http://127.0.0.1:8888/notebooks/" + path2);
+                        GoToLink("http://localhost:8888/notebooks/" + path2);
                     }
                     tsw.Close();
                 }
@@ -244,7 +244,7 @@ namespace CS_407
                     if (checkCreate == true)
                     {
                         tsw.WriteLine(Newpath);
-                        GoToLink("http://127.0.0.1:8888/notebooks/" + path2);
+                        GoToLink("http://localhost:8888/notebooks/" + path2);
                     }
                     tsw.Close();
                 }
@@ -259,7 +259,7 @@ namespace CS_407
                     if (checkCreate == true)
                     {
                         tsw.WriteLine(Newpath);
-                        GoToLink("http://127.0.0.1:8888/notebooks/" + path2);
+                        GoToLink("http://localhost:8888/notebooks/" + path2);
                     }
                     tsw.Close();
                 }
