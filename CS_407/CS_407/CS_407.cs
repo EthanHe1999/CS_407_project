@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Threading;
 
 namespace CS_407
 {
@@ -17,8 +18,13 @@ namespace CS_407
         string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/" + "csvFilePath.txt";
         public CS_407()
         {
+            start();
+            //Thread.Sleep(5000);
+           
+            Thread.Sleep(5000);
             InitializeComponent();
-            //LaunchJupyter();
+            
+          
         }
         
         private void label5_Click(object sender, EventArgs e)
@@ -26,44 +32,9 @@ namespace CS_407
             
         }
 
-        void LaunchJupyter()
-        {
-            try
-            {
-                Process cmd = new Process();
-                cmd.StartInfo.FileName = "cmd.exe";
-                cmd.StartInfo.RedirectStandardInput = true;
-                cmd.StartInfo.RedirectStandardOutput = true;
-                cmd.StartInfo.CreateNoWindow = true;
-                cmd.StartInfo.UseShellExecute = false;
-                cmd.Start();
+       
 
-                cmd.StandardInput.WriteLine("jupyter notebook");
-                cmd.StandardInput.Flush();
-                cmd.StandardInput.Close();
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-            
-        }
-
-        void ColseJupyter()
-        {
-            Process cmd = new Process();
-            cmd.StartInfo.FileName = "cmd.exe";
-            cmd.StartInfo.RedirectStandardInput = true;
-            cmd.StartInfo.RedirectStandardOutput = true;
-            cmd.StartInfo.CreateNoWindow = true;
-            cmd.StartInfo.UseShellExecute = false;
-            cmd.Start();
-
-            cmd.StandardInput.WriteLine("Jupyter notebook stop");
-            cmd.StandardInput.Flush();
-            cmd.StandardInput.Close();
-        }
-
+        
         void GoToLink(string link)
         {
             try
@@ -125,7 +96,9 @@ namespace CS_407
                     string Newpath = RemakePath(pathfile);
                     if (checkCreate == true)
                     {
-                        tsw.WriteLine(Newpath);                        
+                        tsw.WriteLine(Newpath); 
+                        //start();
+                        //Thread.Sleep(5000);
                         GoToLink("http://localhost:8888/notebooks/" + path2);
                     }
                     tsw.Close();
@@ -140,7 +113,9 @@ namespace CS_407
                     string Newpath = RemakePath(pathfile);
                     if (checkCreate == true)
                     {
-                        tsw.WriteLine(Newpath);                                       
+                        tsw.WriteLine(Newpath);     
+                        //start();
+                        //Thread.Sleep(5000);
                         GoToLink("http://localhost:8888/notebooks/" + path2);
                     }
                     tsw.Close();
@@ -244,6 +219,7 @@ namespace CS_407
                     if (checkCreate == true)
                     {
                         tsw.WriteLine(Newpath);
+                        
                         GoToLink("http://localhost:8888/notebooks/" + path2);
                     }
                     tsw.Close();
@@ -259,6 +235,7 @@ namespace CS_407
                     if (checkCreate == true)
                     {
                         tsw.WriteLine(Newpath);
+                       
                         GoToLink("http://localhost:8888/notebooks/" + path2);
                     }
                     tsw.Close();
@@ -280,5 +257,21 @@ namespace CS_407
 
         }
 
+        private void pictureBox12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
+        public void start()
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            ProcessStartInfo command = new ProcessStartInfo();
+            command.FileName = "cmd.exe";
+            command.WorkingDirectory = @"C:\Users\Owner";
+            command.Arguments = "/C jupyter notebook";
+            process.StartInfo = command;
+            process.Start();
+        }
     }
 }
