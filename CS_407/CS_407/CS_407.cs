@@ -16,12 +16,13 @@ namespace CS_407
     public partial class CS_407 : Form
     {
         string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/" + "csvFilePath.txt";
+        string result;
         public CS_407()
         {
-            start();
+            //start();
             //Thread.Sleep(5000);
            
-            Thread.Sleep(5000);
+            //Thread.Sleep(5000);
             InitializeComponent();
             
           
@@ -262,16 +263,69 @@ namespace CS_407
 
         }
 
-       
+        public void pythonPath()
+
+        {
+            //  start();
+            string pathPython = System.AppDomain.CurrentDomain.BaseDirectory + "python" +
+                "\\Scripts\\jupyter-notebook.exe";
+             string FileName = Environment.CurrentDirectory + @"/python/Scripts/jupyter-notebook.exe";
+            System.Diagnostics.Process.Start(pathPython);
+        }
         public void start()
         {
+            string pathL = Environment.CurrentDirectory + "/" + "Regressions%20with%20charts.ipynb";
+            string[] sepStrings = { "\\" };
+            string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             ProcessStartInfo command = new ProcessStartInfo();
             command.FileName = "cmd.exe";
-            command.WorkingDirectory = @"C:\Users\Owner";
-            command.Arguments = "/C jupyter notebook";
-            process.StartInfo = command;
-            process.Start();
+            command.WorkingDirectory = @words[0] + "\\" + words[1] + "\\" + words[2];
+
+            command.Arguments = "/C where python";
+            command.UseShellExecute = false;
+            command.RedirectStandardOutput = true;
+            using (Process process2 = Process.Start(command))
+            {
+                using (StreamReader reader = process2.StandardOutput)
+                {
+                     result = reader.ReadToEnd();
+                    if (result == "")
+                    {
+                        //command.Arguments = "/C install python";
+                        MessageBox.Show("DownLoad");
+                    }
+                    else
+                    {
+                        MessageBox.Show(result);
+                    }
+                }
+            }
+            //command.WorkingDirectory = @"C:\Users\Owner";
+            //command.Arguments = "/C jupyter notebook";
+            //process.StartInfo = command;
+            //process.Start();
+        }
+        private void run_cmd(string cmd, string args)
+        {
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = "cmd.exe";
+            start.Arguments = string.Format("{0} {1}", cmd, args);
+            start.UseShellExecute = false;
+            start.RedirectStandardOutput = true;
+            using (Process process = Process.Start(start))
+            {
+                using (StreamReader reader = process.StandardOutput)
+                {
+                    string result = reader.ReadToEnd();
+                    Console.Write(result);
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pythonPath();
         }
     }
 }
