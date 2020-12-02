@@ -43,6 +43,12 @@ namespace CS_407
                 tsw.WriteLine(path2 + "CSV/StudentGrades.csv");
                 tsw.WriteLine(path2 + "CSV/InterestRate.csv");
                 tsw.WriteLine(path2 + "CSV/PetrolConsumption.csv");
+                tsw.WriteLine(path2 + "CSV/Insurance.csv");
+                tsw.WriteLine(path2 + "CSV/pima_indians_diabetes.csv");
+                tsw.WriteLine(path2 + "CSV/Weddings.csv");
+                tsw.WriteLine(path2 + "CSV/titanic.csv");
+                tsw.WriteLine(path2 + "CSV/PetrolConsumption.csv");
+                tsw.WriteLine(path2 + "CSV/bill_authentication.csv");
                 tsw.Close();
             }
             else
@@ -54,6 +60,12 @@ namespace CS_407
                 tsw.WriteLine(path2 + "CSV/StudentGrades.csv");
                 tsw.WriteLine(path2 + "CSV/InterestRate.csv");
                 tsw.WriteLine(path2 + "CSV/PetrolConsumption.csv");
+                tsw.WriteLine(path2 + "CSV/Insurance.csv");
+                tsw.WriteLine(path2 + "CSV/pima_indians_diabetes.csv");
+                tsw.WriteLine(path2 + "CSV/Weddings.csv");
+                tsw.WriteLine(path2 + "CSV/titanic.csv");
+                tsw.WriteLine(path2 + "CSV/PetrolConsumption.csv");
+                tsw.WriteLine(path2 + "CSV/bill_authentication.csv");
                 tsw.Close();
             }           
         }
@@ -62,8 +74,7 @@ namespace CS_407
         {
             
         }
-
-        
+  
         void GoToLink(string link)
         {
             try
@@ -182,12 +193,60 @@ namespace CS_407
 
         private void Descision_Tree(object sender, EventArgs e)
         {
+            try
+            {
+                string pathL = path2 + "JupyterNotebook/Decision_Tree_And_Random_Forest.ipynb";
+                string[] sepStrings = { "/" };
+                string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                string path3 = "";
+                for (int i = 3; i < words.Length; i++)
+                {
+                    if (i != words.Length - 1)
+                    {
+                        path3 += words[i];
+                        path3 += "/";
+                    }
+                    else
+                    {
+                        path3 += words[i];
+                    }
 
+                }
+                GoToLink("http://localhost:8888/notebooks/" + path3);
+            }
+            catch (Exception s)
+            {
+                MessageBox.Show(s.Message);
+            }
         }
 
         private void Random_Forrest(object sender, EventArgs e)
         {
+            try
+            {
+                string pathL = path2 + "JupyterNotebook/Decision_Tree_And_Random_Forest.ipynb";
+                string[] sepStrings = { "/" };
+                string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                string path3 = "";
+                for (int i = 3; i < words.Length; i++)
+                {
+                    if (i != words.Length - 1)
+                    {
+                        path3 += words[i];
+                        path3 += "/";
+                    }
+                    else
+                    {
+                        path3 += words[i];
+                    }
 
+                }
+                GoToLink("http://localhost:8888/notebooks/" + path3);
+            }
+            catch (Exception s)
+            {
+                MessageBox.Show(s.Message);
+            }
         }
 
         private void pictureBox12_Click(object sender, EventArgs e)
@@ -265,6 +324,64 @@ namespace CS_407
             if (File.Exists(path))
             {
                 File.Delete(path);
+            }
+        }
+
+        private void Cluster(object sender, EventArgs e)
+        {
+            try
+            {
+                string pathL = path2 + "JupyterNotebook/K-Mean-Clustering-Final-WithLib.ipynb";
+                string[] sepStrings = { "/" };
+                string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                string path3 = "";
+                for (int i = 3; i < words.Length; i++)
+                {
+                    if (i != words.Length - 1)
+                    {
+                        path3 += words[i];
+                        path3 += "/";
+                    }
+                    else
+                    {
+                        path3 += words[i];
+                    }
+
+                }
+                GoToLink("http://localhost:8888/notebooks/" + path3);
+            }
+            catch (Exception s)
+            {
+                MessageBox.Show(s.Message);
+            }
+        }
+
+        private void Fuzzy_Matching(object sender, EventArgs e)
+        {
+            try
+            {
+                string pathL = path2 + "JupyterNotebook/Fuzzy%20Matching%20of%20data.ipynb";
+                string[] sepStrings = { "/" };
+                string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                string path3 = "";
+                for (int i = 3; i < words.Length; i++)
+                {
+                    if (i != words.Length - 1)
+                    {
+                        path3 += words[i];
+                        path3 += "/";
+                    }
+                    else
+                    {
+                        path3 += words[i];
+                    }
+
+                }
+                GoToLink("http://localhost:8888/notebooks/" + path3);
+            }
+            catch (Exception s)
+            {
+                MessageBox.Show(s.Message);
             }
         }
     }

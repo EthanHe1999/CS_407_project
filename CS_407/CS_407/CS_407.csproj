@@ -68,12 +68,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="CSV\bill_authentication.csv" />
     <None Include="CSV\HousePrices.csv" />
+    <None Include="CSV\Insurance.csv" />
     <None Include="CSV\InterestRate.csv" />
     <None Include="CSV\PetrolConsumption.csv" />
+    <None Include="CSV\pima_indians_diabetes.csv" />
     <None Include="CSV\StudentGrades.csv" />
+    <None Include="CSV\titanic.csv" />
     <None Include="CSV\Weddings.csv" />
-    <None Include="JupyterNotebook\ClusterLib.ipynb" />
+    <None Include="JupyterNotebook\Decision_Tree_And_Random_Forest.ipynb" />
+    <None Include="JupyterNotebook\Fuzzy Matching of data.ipynb" />
+    <None Include="JupyterNotebook\K-Mean-Clustering-Final-WithLib.ipynb" />
     <None Include="JupyterNotebook\Logistic Regression.ipynb" />
     <None Include="JupyterNotebook\Naive Bayes.ipynb" />
     <None Include="JupyterNotebook\Regressions with charts.ipynb" />
