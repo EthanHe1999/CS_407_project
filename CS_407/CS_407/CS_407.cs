@@ -14,26 +14,54 @@ using System.Threading;
 namespace CS_407
 {
     public partial class CS_407 : Form
-    {
-        string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/" + "csvFilePath.txt";
+    {        
         string result;
+        string path2 = "";
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/csvFilePath.txt";
         public CS_407()
         {
+
             //start();
             //Thread.Sleep(5000);
            
             //Thread.Sleep(5000);
             InitializeComponent();
-            
-          
+            string pathL = Environment.CurrentDirectory;
+            string[] sepStrings = { "\\" };
+            string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
+           
+            for(int i = 0; i < words.Length - 2; i++)
+            {
+                    path2 += words[i];
+                    path2 += "/";
+            }
+            if (!File.Exists(path))
+            {
+                TextWriter tsw = new StreamWriter(path, true);
+                tsw.WriteLine(path2 + "CSV/HousePrices.csv");
+                tsw.WriteLine(path2 + "CSV/Weddings.csv");
+                tsw.WriteLine(path2 + "CSV/StudentGrades.csv");
+                tsw.WriteLine(path2 + "CSV/InterestRate.csv");
+                tsw.WriteLine(path2 + "CSV/PetrolConsumption.csv");
+                tsw.Close();
+            }
+            else
+            {
+                //File.Delete(path);
+                TextWriter tsw = new StreamWriter(path, true);
+                tsw.WriteLine(path2 + "CSV/HousePrices.csv");
+                tsw.WriteLine(path2 + "CSV/Weddings.csv");
+                tsw.WriteLine(path2 + "CSV/StudentGrades.csv");
+                tsw.WriteLine(path2 + "CSV/InterestRate.csv");
+                tsw.WriteLine(path2 + "CSV/PetrolConsumption.csv");
+                tsw.Close();
+            }           
         }
         
         private void label5_Click(object sender, EventArgs e)
         {
             
         }
-
-       
 
         
         void GoToLink(string link)
@@ -66,61 +94,27 @@ namespace CS_407
             return path;
         }
         private void Linear_Regression(object sender, EventArgs e)
-        {
-            Linear_Regressions ls = new Linear_Regressions();
+        {          
             try
             {
-                string pathL = Environment.CurrentDirectory + "/" + "Regressions%20with%20charts.ipynb";
-                string[] sepStrings = { "\\" };
+                string pathL = path2 + "JupyterNotebook/Regressions%20with%20charts.ipynb";
+                string[] sepStrings = { "/" };                
                 string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
-                string path2 = "";
+                string path3 = "";
                 for (int i = 3; i < words.Length; i++)
                 {
                     if (i != words.Length - 1)
                     {
-                        path2 += words[i];
-                        path2 += "/";
+                        path3 += words[i];
+                        path3 += "/";
                     }
                     else
                     {
-                        path2 += words[i];
+                        path3 += words[i];
                     }
 
                 }
-
-                if (!File.Exists(path))
-                {
-                    TextWriter tsw = new StreamWriter(path, true);
-                    ls.ShowDialog();
-                    string pathfile = ls.getpath();
-                    bool checkCreate = ls.getcheck();
-                    string Newpath = RemakePath(pathfile);
-                    if (checkCreate == true)
-                    {
-                        tsw.WriteLine(Newpath); 
-                        //start();
-                        //Thread.Sleep(5000);
-                        GoToLink("http://localhost:8888/notebooks/" + path2);
-                    }
-                    tsw.Close();
-                }
-                else
-                {
-                    File.Delete(path);
-                    TextWriter tsw = new StreamWriter(path, true);
-                    ls.ShowDialog();
-                    string pathfile = ls.getpath();
-                    bool checkCreate = ls.getcheck();
-                    string Newpath = RemakePath(pathfile);
-                    if (checkCreate == true)
-                    {
-                        tsw.WriteLine(Newpath);     
-                        //start();
-                        //Thread.Sleep(5000);
-                        GoToLink("http://localhost:8888/notebooks/" + path2);
-                    }
-                    tsw.Close();
-                }
+                GoToLink("http://localhost:8888/notebooks/" + path3);
             }
             catch(Exception s)
             {
@@ -129,57 +123,27 @@ namespace CS_407
         }
 
         private void Logistic_Regression(object sender, EventArgs e)
-        {
-            Linear_Regressions ls = new Linear_Regressions();
+        {            
             try
             {
-                string pathL = Environment.CurrentDirectory + "/" + "Logistic%20Regression.ipynb";
-                string[] sepStrings = { "\\" };
+                string pathL = path2 + "JupyterNotebook/Logistic%20Regression.ipynb";
+                string[] sepStrings = { "/" };
                 string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
-                string path2 = "";
+                string path3 = "";
                 for (int i = 3; i < words.Length; i++)
                 {
                     if (i != words.Length - 1)
                     {
-                        path2 += words[i];
-                        path2 += "/";
+                        path3 += words[i];
+                        path3 += "/";
                     }
                     else
                     {
-                        path2 += words[i];
+                        path3 += words[i];
                     }
 
                 }
-
-                if (!File.Exists(path))
-                {
-                    TextWriter tsw = new StreamWriter(path, true);
-                    ls.ShowDialog();
-                    string pathfile = ls.getpath();
-                    bool checkCreate = ls.getcheck();
-                    string Newpath = RemakePath(pathfile);
-                    if (checkCreate == true)
-                    {
-                        tsw.WriteLine(Newpath);
-                        GoToLink("http://localhost:8888/notebooks/" + path2);
-                    }
-                    tsw.Close();
-                }
-                else
-                {
-                    File.Delete(path);
-                    TextWriter tsw = new StreamWriter(path, true);
-                    ls.ShowDialog();
-                    string pathfile = ls.getpath();
-                    bool checkCreate = ls.getcheck();
-                    string Newpath = RemakePath(pathfile);
-                    if (checkCreate == true)
-                    {
-                        tsw.WriteLine(Newpath);
-                        GoToLink("http://localhost:8888/notebooks/" + path2);
-                    }
-                    tsw.Close();
-                }
+                GoToLink("http://localhost:8888/notebooks/" + path3);
             }
             catch (Exception s)
             {
@@ -188,59 +152,27 @@ namespace CS_407
         }
 
         private void Baye_Classification(object sender, EventArgs e)
-        {
-            Linear_Regressions ls = new Linear_Regressions();
+        {           
             try
             {
-                string pathL = Environment.CurrentDirectory + "/" + "Naive%20Bayes.ipynb";
-                string[] sepStrings = { "\\" };
+                string pathL = path2 + "JupyterNotebook/Naive%20Bayes.ipynb";
+                string[] sepStrings = { "/" };
                 string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
-                string path2 = "";
+                string path3 = "";
                 for (int i = 3; i < words.Length; i++)
                 {
                     if (i != words.Length - 1)
                     {
-                        path2 += words[i];
-                        path2 += "/";
+                        path3 += words[i];
+                        path3 += "/";
                     }
                     else
                     {
-                        path2 += words[i];
+                        path3 += words[i];
                     }
 
                 }
-
-                if (!File.Exists(path))
-                {
-                    TextWriter tsw = new StreamWriter(path, true);
-                    ls.ShowDialog();
-                    string pathfile = ls.getpath();
-                    bool checkCreate = ls.getcheck();
-                    string Newpath = RemakePath(pathfile);
-                    if (checkCreate == true)
-                    {
-                        tsw.WriteLine(Newpath);
-                        
-                        GoToLink("http://localhost:8888/notebooks/" + path2);
-                    }
-                    tsw.Close();
-                }
-                else
-                {
-                    File.Delete(path);
-                    TextWriter tsw = new StreamWriter(path, true);
-                    ls.ShowDialog();
-                    string pathfile = ls.getpath();
-                    bool checkCreate = ls.getcheck();
-                    string Newpath = RemakePath(pathfile);
-                    if (checkCreate == true)
-                    {
-                        tsw.WriteLine(Newpath);
-                       
-                        GoToLink("http://localhost:8888/notebooks/" + path2);
-                    }
-                    tsw.Close();
-                }
+                GoToLink("http://localhost:8888/notebooks/" + path3);
             }
             catch (Exception s)
             {
@@ -326,6 +258,14 @@ namespace CS_407
         private void button1_Click(object sender, EventArgs e)
         {
             pythonPath();
+        }
+
+        private void FormClose(object sender, FormClosingEventArgs e)
+        {
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
         }
     }
 }
