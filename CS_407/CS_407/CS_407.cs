@@ -257,11 +257,19 @@ namespace CS_407
         public void pythonPath()
 
         {
-            //  start();
-            string pathPython = System.AppDomain.CurrentDomain.BaseDirectory + "python" +
-                "\\Scripts\\jupyter-notebook.exe";
-             string FileName = Environment.CurrentDirectory + @"/python/Scripts/jupyter-notebook.exe";
-            System.Diagnostics.Process.Start(pathPython);
+            string name = path2 + @"/Python37/Scripts/jupyter-notebook.exe";
+            string FileName = "jupyter-notebook.exe";
+            MessageBox.Show(FileName);
+            Process p = new Process();
+            String newpath = path2 + @"/Python37/python.exe";
+            p.StartInfo.WorkingDirectory = @"/Python37/Scripts";
+            p.StartInfo.FileName = path2 + @"/Python37/Scripts/jupyter-notebook.exe";
+            
+            p.StartInfo.RedirectStandardOutput = false;
+            p.StartInfo.RedirectStandardInput = false;
+          //  System.Diagnostics.Process.Start(newpath);
+            p.Start();
+            //System.Diagnostics.Process.Start(name);
         }
         public void start()
         {
