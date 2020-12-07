@@ -259,16 +259,24 @@ namespace CS_407
         {
             string name = path2 + @"/Python37/Scripts/jupyter-notebook.exe";
             string FileName = "jupyter-notebook.exe";
-            MessageBox.Show(FileName);
-            Process p = new Process();
-            String newpath = path2 + @"/Python37/python.exe";
-            p.StartInfo.WorkingDirectory = @"/Python37/Scripts";
-            p.StartInfo.FileName = path2 + @"/Python37/Scripts/jupyter-notebook.exe";
-            
-            p.StartInfo.RedirectStandardOutput = false;
-            p.StartInfo.RedirectStandardInput = false;
-          //  System.Diagnostics.Process.Start(newpath);
-            p.Start();
+            try
+            {
+                // path2 + @"/Python37/Scripts/jupyter-kernel.exe";
+                Process p = new Process();
+                String newpath = path2 + @"/Python37/python.exe";
+                p.StartInfo.WorkingDirectory = path2 + @"/JupyterNotebook";
+                p.StartInfo.FileName = "cmd";
+                p.StartInfo.Arguments = "/C python -m notebook";
+
+                p.StartInfo.RedirectStandardOutput = false;
+                p.StartInfo.RedirectStandardInput = false;
+                //  System.Diagnostics.Process.Start(newpath);
+                p.Start();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                Console.ReadKey();
+            }
             //System.Diagnostics.Process.Start(name);
         }
         public void start()
@@ -305,22 +313,7 @@ namespace CS_407
             //process.StartInfo = command;
             //process.Start();
         }
-        private void run_cmd(string cmd, string args)
-        {
-            ProcessStartInfo start = new ProcessStartInfo();
-            start.FileName = "cmd.exe";
-            start.Arguments = string.Format("{0} {1}", cmd, args);
-            start.UseShellExecute = false;
-            start.RedirectStandardOutput = true;
-            using (Process process = Process.Start(start))
-            {
-                using (StreamReader reader = process.StandardOutput)
-                {
-                    string result = reader.ReadToEnd();
-                    Console.Write(result);
-                }
-            }
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
