@@ -21,9 +21,6 @@ namespace CS_407
         public CS_407()
         {
 
-           
-           
-           
             InitializeComponent();
         //    pythonPath();
             string pathL = Environment.CurrentDirectory;
