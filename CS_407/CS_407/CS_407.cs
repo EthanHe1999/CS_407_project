@@ -67,7 +67,8 @@ namespace CS_407
                 tsw.WriteLine(path2 + "CSV/PetrolConsumption.csv");
                 tsw.WriteLine(path2 + "CSV/bill_authentication.csv");
                 tsw.Close();
-            }           
+            }
+            pythonPath();
         }
         
         private void label5_Click(object sender, EventArgs e)
