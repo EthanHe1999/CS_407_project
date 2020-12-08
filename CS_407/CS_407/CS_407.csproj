@@ -80,6 +80,7 @@
     <None Include="JupyterNotebook\Decision_Tree_And_Random_Forest.ipynb" />
     <None Include="JupyterNotebook\Fuzzy Matching of data.ipynb" />
     <None Include="JupyterNotebook\K-Mean-Clustering-Final-WithLib.ipynb" />
+    <None Include="JupyterNotebook\Linear Programming.ipynb" />
     <None Include="JupyterNotebook\Logistic Regression.ipynb" />
     <None Include="JupyterNotebook\Naive Bayes.ipynb" />
     <None Include="JupyterNotebook\Regressions with charts.ipynb" />

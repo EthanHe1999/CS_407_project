@@ -21,11 +21,11 @@ namespace CS_407
         public CS_407()
         {
 
-            //start();
-            //Thread.Sleep(5000);
            
-            //Thread.Sleep(5000);
+           
+           
             InitializeComponent();
+        //    pythonPath();
             string pathL = Environment.CurrentDirectory;
             string[] sepStrings = { "\\" };
             string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
@@ -125,7 +125,7 @@ namespace CS_407
                     }
 
                 }
-                GoToLink("http://localhost:8888/notebooks/" + path3);
+                GoToLink("http://localhost:8888/notebooks/" + "Regressions%20with%20charts.ipynb");
             }
             catch(Exception s)
             {
@@ -154,7 +154,7 @@ namespace CS_407
                     }
 
                 }
-                GoToLink("http://localhost:8888/notebooks/" + path3);
+                GoToLink("http://localhost:8888/notebooks" + "/Logistic%20Regression.ipynb");
             }
             catch (Exception s)
             {
@@ -183,7 +183,7 @@ namespace CS_407
                     }
 
                 }
-                GoToLink("http://localhost:8888/notebooks/" + path3);
+                GoToLink("http://localhost:8888/notebooks/" + "Naive%20Bayes.ipynb");
             }
             catch (Exception s)
             {
@@ -212,7 +212,7 @@ namespace CS_407
                     }
 
                 }
-                GoToLink("http://localhost:8888/notebooks/" + path3);
+                GoToLink("http://localhost:8888/notebooks/" + "Decision_Tree_And_Random_Forest.ipynb");
             }
             catch (Exception s)
             {
@@ -224,6 +224,7 @@ namespace CS_407
         {
             try
             {
+           
                 string pathL = path2 + "JupyterNotebook/Decision_Tree_And_Random_Forest.ipynb";
                 string[] sepStrings = { "/" };
                 string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
@@ -241,7 +242,7 @@ namespace CS_407
                     }
 
                 }
-                GoToLink("http://localhost:8888/notebooks/" + path3);
+                GoToLink("http://localhost:8888/notebooks/" + "Decision_Tree_And_Random_Forest.ipynb");
             }
             catch (Exception s)
             {
@@ -257,17 +258,18 @@ namespace CS_407
         public void pythonPath()
 
         {
-            string name = path2 + @"/Python37/Scripts/jupyter-notebook.exe";
-            string FileName = "jupyter-notebook.exe";
+           // string name = path2 + @"/Python37/Scripts/jupyter-notebook.exe";
+           // string FileName = "jupyter-notebook.exe";
             try
             {
                 // path2 + @"/Python37/Scripts/jupyter-kernel.exe";
                 Process p = new Process();
                 String newpath = path2 + @"/Python37/python.exe";
-                p.StartInfo.WorkingDirectory = path2 + @"/JupyterNotebook";
                 p.StartInfo.FileName = "cmd";
+                p.StartInfo.WorkingDirectory = path2 + @"/JupyterNotebook";
+               
                 p.StartInfo.Arguments = "/C python -m notebook";
-
+             //   p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 p.StartInfo.RedirectStandardOutput = false;
                 p.StartInfo.RedirectStandardInput = false;
                 //  System.Diagnostics.Process.Start(newpath);
@@ -279,40 +281,7 @@ namespace CS_407
             }
             //System.Diagnostics.Process.Start(name);
         }
-        public void start()
-        {
-            string pathL = Environment.CurrentDirectory + "/" + "Regressions%20with%20charts.ipynb";
-            string[] sepStrings = { "\\" };
-            string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
-            System.Diagnostics.Process process = new System.Diagnostics.Process();
-            ProcessStartInfo command = new ProcessStartInfo();
-            command.FileName = "cmd.exe";
-            command.WorkingDirectory = @words[0] + "\\" + words[1] + "\\" + words[2];
-
-            command.Arguments = "/C where python";
-            command.UseShellExecute = false;
-            command.RedirectStandardOutput = true;
-            using (Process process2 = Process.Start(command))
-            {
-                using (StreamReader reader = process2.StandardOutput)
-                {
-                     result = reader.ReadToEnd();
-                    if (result == "")
-                    {
-                        //command.Arguments = "/C install python";
-                        MessageBox.Show("DownLoad");
-                    }
-                    else
-                    {
-                        MessageBox.Show(result);
-                    }
-                }
-            }
-            //command.WorkingDirectory = @"C:\Users\Owner";
-            //command.Arguments = "/C jupyter notebook";
-            //process.StartInfo = command;
-            //process.Start();
-        }
+       
         
 
         private void button1_Click(object sender, EventArgs e)
@@ -349,7 +318,7 @@ namespace CS_407
                     }
 
                 }
-                GoToLink("http://localhost:8888/notebooks/" + path3);
+                GoToLink("http://localhost:8888/notebooks/" + "K-Mean-Clustering-Final-WithLib.ipynb");
             }
             catch (Exception s)
             {
@@ -378,7 +347,36 @@ namespace CS_407
                     }
 
                 }
-                GoToLink("http://localhost:8888/notebooks/" + path3);
+                GoToLink("http://localhost:8888/notebooks/" + "Fuzzy%20Matching%20of%20data.ipynb");
+            }
+            catch (Exception s)
+            {
+                MessageBox.Show(s.Message);
+            }
+        }
+
+        private void pictureBox11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string pathL = path2 + "JupyterNotebook/Linear%20Programming.ipynb";
+                string[] sepStrings = { "/" };
+                string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                string path3 = "";
+                for (int i = 3; i < words.Length; i++)
+                {
+                    if (i != words.Length - 1)
+                    {
+                        path3 += words[i];
+                        path3 += "/";
+                    }
+                    else
+                    {
+                        path3 += words[i];
+                    }
+
+                }
+                GoToLink("http://localhost:8888/notebooks/" + "Linear%20Programming.ipynb");
             }
             catch (Exception s)
             {
