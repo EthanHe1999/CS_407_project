@@ -266,10 +266,10 @@ namespace CS_407
                 Process p = new Process();
                 String newpath = path2 + @"/Python37/python.exe";
                 p.StartInfo.FileName = "cmd";
-                p.StartInfo.WorkingDirectory = path2 + @"/Python37/Scripts";
-              //  p.StartInfo.WorkingDirectory = path2 + @"/JupyterNotebook";
+               // p.StartInfo.WorkingDirectory = path2 + @"/Python37/Scripts";
+               p.StartInfo.WorkingDirectory = path2 + @"/JupyterNotebook";
                
-               // p.StartInfo.Arguments = "/C python -m notebook";
+               p.StartInfo.Arguments = "/C python -m notebook";
              //   p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 p.StartInfo.RedirectStandardOutput = false;
                 p.StartInfo.RedirectStandardInput = false;
