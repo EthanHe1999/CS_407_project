@@ -1,0 +1,3 @@
+#!c:\users\owner\source\repos\cs_407_project\cs_407\cs_407\python37\python.exe
+from spark import spark_admin
+spark_admin.main()

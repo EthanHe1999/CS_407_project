@@ -84,6 +84,7 @@
     <None Include="JupyterNotebook\Logistic Regression.ipynb" />
     <None Include="JupyterNotebook\Naive Bayes.ipynb" />
     <None Include="JupyterNotebook\Regressions with charts.ipynb" />
+    <None Include="JupyterNotebook\Spark.ipynb" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

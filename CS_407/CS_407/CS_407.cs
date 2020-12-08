@@ -266,9 +266,10 @@ namespace CS_407
                 Process p = new Process();
                 String newpath = path2 + @"/Python37/python.exe";
                 p.StartInfo.FileName = "cmd";
-                p.StartInfo.WorkingDirectory = path2 + @"/JupyterNotebook";
+                p.StartInfo.WorkingDirectory = path2 + @"/Python37/Scripts";
+              //  p.StartInfo.WorkingDirectory = path2 + @"/JupyterNotebook";
                
-                p.StartInfo.Arguments = "/C python -m notebook";
+               // p.StartInfo.Arguments = "/C python -m notebook";
              //   p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 p.StartInfo.RedirectStandardOutput = false;
                 p.StartInfo.RedirectStandardInput = false;
@@ -377,6 +378,35 @@ namespace CS_407
 
                 }
                 GoToLink("http://localhost:8888/notebooks/" + "Linear%20Programming.ipynb");
+            }
+            catch (Exception s)
+            {
+                MessageBox.Show(s.Message);
+            }
+        }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string pathL = path2 + "JupyterNotebook/Spark.ipynb";
+                string[] sepStrings = { "/" };
+                string[] words = pathL.Split(sepStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                string path3 = "";
+                for (int i = 3; i < words.Length; i++)
+                {
+                    if (i != words.Length - 1)
+                    {
+                        path3 += words[i];
+                        path3 += "/";
+                    }
+                    else
+                    {
+                        path3 += words[i];
+                    }
+
+                }
+                GoToLink("http://localhost:8888/notebooks/" + "Spark.ipynb");
             }
             catch (Exception s)
             {
